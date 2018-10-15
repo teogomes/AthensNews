@@ -1,0 +1,17 @@
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /AthensNews/
+RewriteRule ^index\.php$ - [L]
+RewriteRule ^^get-weather\/([^\/]*)\/([^\/]*)\/$ /AthensNews/wp-content/plugins/live-weather-station/generator.php?type=$matches[2]&station=$matches[1] [QSA,L]
+RewriteRule ^^get-weather\/([^\/]*)\/([A-Z]*)_stickertags\.txt$ /AthensNews/wp-content/plugins/live-weather-station/generator.php?type=stickertags&station=$matches[1]&subformat=$matches[2] [QSA,L]
+RewriteRule ^^get-weather\/([^\/]*)\/clientraw\.txt$ /AthensNews/wp-content/plugins/live-weather-station/generator.php?type=clientraw&station=$matches[1]&subformat=$matches[2] [QSA,L]
+RewriteRule ^^get-weather\/([^\/]*)\/realtime\.txt$ /AthensNews/wp-content/plugins/live-weather-station/generator.php?type=realtime&station=$matches[1]&subformat=$matches[2] [QSA,L]
+RewriteRule ^^get-weather\/([^\/]*)\/YoWindow\.xml$ /AthensNews/wp-content/plugins/live-weather-station/generator.php?type=yowindow&station=$matches[1]&subformat=$matches[2] [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /AthensNews/index.php [L]
+</IfModule>
+
+# END WordPress
